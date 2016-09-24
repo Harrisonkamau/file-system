@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Form Data</title>
+	</head>
+	<body>
+		<h1>Upload files</h1>
+		<form mame="upload" enctype="multipart/form-data">
+			<input type="file" name="uploadedFile" id="uploadedFile">
+			<input type="submit" value="submit">
+		</form>
+		<script  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script>
+			$('#uploadedFile').change(function(e){
+				var file = e.target.files[0];
+				var formData = new FormData();
+				formData.append('uploadedFile', file, file.name);
+
+				// post
+				$.ajax({
+					url: 'http://localhost:3000/upload',
+					type: 'post',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function(){
+						
+					},
+					crossDomain: true
+				});
+
+			});
+		</script>
+
+	</body>
+</html>
