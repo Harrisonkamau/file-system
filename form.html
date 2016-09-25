@@ -16,7 +16,7 @@
 				var formData = new FormData();
 				formData.append('uploadedFile', file, file.name);
 
-				// post
+				// post using Ajax
 				$.ajax({
 					url: 'http://localhost:3000/upload',
 					type: 'post',
